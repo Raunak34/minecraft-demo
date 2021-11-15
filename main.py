@@ -26,7 +26,6 @@ wall_4 = Entity(model="cube", collider="box", position=(-15, 0, -0.5), scale=(1,
                 texture=stone_texture, texture_scale=(5, 5), color=color.rgb(255, 128, 0))
 
 
-
 def update():
     global current_texture
     if held_keys['1']: current_texture = grass_texture
@@ -42,6 +41,8 @@ def update():
         hand.active()
     else:
         hand.passive()
+    if held_keys['q']:
+        quit()
 
 
 class Sky(Entity):
@@ -61,7 +62,7 @@ class Hand(Entity):
             parent=camera.ui,
             model='cube',
             scale=(0.2, 0.3),
-            color=color.white,
+            color=color.rgb(253, 228, 200),
             rotation=Vec3(150, -10, 0),
             position=Vec2(0.4, -0.4)
         )
