@@ -25,6 +25,9 @@ wall_6 = duplicate(wall_1, z=-10)
 wall_4 = Entity(model="cube", collider="box", position=(-15, 0, -0.5), scale=(1, 5, 20), rotation=(0, 0, 0),
                 texture=stone_texture, texture_scale=(5, 5), color=color.rgb(255, 128, 0))
 
+window.fps_counter.enabled = False
+window.exit_button.visible = False
+
 
 def update():
     global current_texture
@@ -94,6 +97,7 @@ class Voxel(Button):
     def input(self, key):
         if self.hovered:
             if key == "left mouse down":
+                punch_sound.play()
                 voxel = Voxel(position=self.position + mouse.normal, texture=current_texture)
                 pos = self.position + mouse.normal
                 game_data.append([(pos.x, pos.y, pos.z), current_texture])
